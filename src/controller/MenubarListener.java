@@ -20,7 +20,11 @@ public class MenubarListener implements ActionListener {
 		SoccerGame soccerGame = gamePanel.getGame();
 		switch (e.getActionCommand()) {
 			case "NEW":
-				gamePanel.setupSoccerGame();
+				if(!soccerGame.isPaused() && !soccerGame.isOver()) {
+					System.out.println("You should pause the game first to start a new game.");
+				} else {
+					gamePanel.setupSoccerGame();
+				}
 				break;
 			case "EXIT":
 				System.exit(0);
