@@ -39,9 +39,11 @@ public class PlayerCollection implements Iterable<GamePlayer>{
 	}
 	
 	public void sort() {
-		if((players.get(0)).compareTo(players.get(1))>0) {
-			Collections.swap(players, 0, 1);
-		}
+		/*
+		 * if((players.get(0)).compareTo(players.get(1))>0) { Collections.swap(players,
+		 * 0, 1);
+		 */
+		Collections.sort(players);
 	}
 	@Override
 	public Iterator<GamePlayer> iterator() {
