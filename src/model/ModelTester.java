@@ -2,11 +2,14 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.awt.Color;
 import java.util.Iterator;
 
 import org.junit.jupiter.api.Test;
 
 import model.players.GamePlayer;
+import model.players.Goalkeeper;
+import model.players.Striker;
 
 class ModelTester {
 
@@ -61,7 +64,52 @@ class ModelTester {
 		 */
 		assertEquals("Goalkeeper caught 4 balls",Goalkeeper.toString());
 		assertEquals("Striker scored 2 goals",Striker.toString());
-
+	}
+	
+	@Test
+	public void moveTest() {
+		GamePlayer striker = new Striker("Striker", Color.red);
+		striker.setInitialPosition();;
+		//initial position 500,450
+		//usual movement = 5
+		
+		striker.moveLeft();// should be 500-5,450 = 495, 450
+		assertEquals(495,striker.getPlayerPosition().getX());
+		assertEquals(450,striker.getPlayerPosition().getY());
+		
+		striker.moveRight();// should be the initial position
+		assertEquals(500,striker.getPlayerPosition().getX());
+		assertEquals(450,striker.getPlayerPosition().getY());
+		
+		striker.moveUp();// should be 500, 450-5 = 500, 445
+		assertEquals(500,striker.getPlayerPosition().getX());
+		assertEquals(445,striker.getPlayerPosition().getY());
+		
+		striker.moveDown();// should be the initial position
+		assertEquals(500,striker.getPlayerPosition().getX());
+		assertEquals(450,striker.getPlayerPosition().getY());
+		
+		
+		GamePlayer goalkeeper = new Goalkeeper("Goalkeeper", Color.red);
+		goalkeeper.setInitialPosition();//initial position 280, 70
+		// movementstep for goalkeeper = 10;
+		
+		goalkeeper.moveLeft();// should be 280-movementstep, 70 = 270, 70
+		assertEquals(270,goalkeeper.getPlayerPosition().getX());
+		assertEquals(70,goalkeeper.getPlayerPosition().getY());
+		
+		goalkeeper.moveRight();// should be the initial position
+		assertEquals(280,goalkeeper.getPlayerPosition().getX());
+		assertEquals(70,goalkeeper.getPlayerPosition().getY());
+		
+		goalkeeper.moveDown();// should be 280, 70+5 = 280, 80
+		assertEquals(280,goalkeeper.getPlayerPosition().getX());
+		assertEquals(75,goalkeeper.getPlayerPosition().getY());
+		
+		goalkeeper.moveUp();// should be the initial position
+		assertEquals(280,goalkeeper.getPlayerPosition().getX());
+		assertEquals(70,goalkeeper.getPlayerPosition().getY());
+		
 	}
 
 }
