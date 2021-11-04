@@ -7,10 +7,10 @@ import model.players.GamePlayer;
 
 @SuppressWarnings("hiding")
 public class PlayerCollectionIterator<GamePlayer> implements Iterator<GamePlayer>{
-	int head;
-	int tail;
-	ArrayList<GamePlayer> players;
-	PlayerCollectionIterator(ArrayList<GamePlayer> players){
+	private int head;
+	private int tail;
+	private ArrayList<GamePlayer> players;
+	public PlayerCollectionIterator(ArrayList<GamePlayer> players){
 		this.players = players;
 		head=0;
 		tail=players.size()-1;
