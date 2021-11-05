@@ -12,7 +12,7 @@ import model.players.GamePlayer;
  */
 public class PlayerCollection implements Iterable<GamePlayer>{
 	
-	private static ArrayList<GamePlayer> players;
+	private ArrayList<GamePlayer> players;
 	
 	/**
 	 * Create PlayerCollection object.
