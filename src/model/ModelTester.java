@@ -3,6 +3,7 @@ package model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.util.Iterator;
 
 import org.junit.jupiter.api.Test;
@@ -68,7 +69,7 @@ class ModelTester {
 	
 	@Test
 	public void moveTest() {
-		GamePlayer striker = new Striker("Striker", Color.red);
+		Striker striker = new Striker("Striker", Color.red);
 		striker.setInitialPosition();;
 		//initial position 500,450
 		//usual movement = 5
@@ -90,9 +91,9 @@ class ModelTester {
 		assertEquals(450,striker.getPlayerPosition().getY());
 		
 		
-		GamePlayer goalkeeper = new Goalkeeper("Goalkeeper", Color.red);
+		Goalkeeper goalkeeper = new Goalkeeper("Goalkeeper", Color.red);
 		goalkeeper.setInitialPosition();//initial position 280, 70
-		// movementstep for goalkeeper = 10;
+		// movementstep for goalkeeper = 10; (for left and right)
 		
 		goalkeeper.moveLeft();// should be 280-movementstep, 70 = 270, 70
 		assertEquals(270,goalkeeper.getPlayerPosition().getX());
@@ -110,6 +111,63 @@ class ModelTester {
 		assertEquals(280,goalkeeper.getPlayerPosition().getX());
 		assertEquals(70,goalkeeper.getPlayerPosition().getY());
 		
+		int x=goalkeeper.getPlayerPosition().x;
+		goalkeeper.moveRandomly();
+		//it moves randomly to left or right
+		//So, check whether the x position was changed
+		assertTrue(goalkeeper.getPlayerPosition().getX()!=x);
 	}
-
+	
+	@Test
+	public void soccorTest(){
+		SoccerGame game = new SoccerGame();
+		assertNotNull(game);
+		// check whether the SoccerGame object was created
+		
+		// check setter and getter of remaining time
+		game.setTimeRemaining(50);
+		assertTrue(game.getTimeRemaining()==50);
+		
+		// check setter and getter of pause
+		game.setPaused(false);
+		assertTrue(game.isPaused()==false);
+		game.setPaused(true);
+		assertTrue(game.isPaused()==true);
+		
+		// check setter and getter of game over
+		game.setOver(true);
+		assertTrue(game.isOver()==true);
+		game.setOver(false);
+		assertTrue(game.isOver()==false);
+		
+		
+		PlayerCollection players = game.getGamePlayers();
+		assertEquals("Striker", players.get("Striker").getPlayerName());
+		assertEquals("Goalkeeper",players.get("Goalkeeper").getPlayerName());
+		// check whether players in SoccerGame were created
+		
+		assertEquals("Striker",game.getActivePlayer().getPlayerName());
+		// check whether active player is striker
+		
+		SoccerBall ball = SoccerBall.getSoccerBall();
+		ball.setPosition(game.getGamePlayers().get("Goalkeeper").getPlayerPosition());
+		assertTrue(ball.getPosition().x==280);
+		assertTrue(ball.getPosition().y==70);
+		// Set the ball goalkeeper's initial position(280,70) and move goalkeeper.
+		// and chekc it.
+		
+		
+		game.automateGoalkeeper();
+		// Then, goalkeeper should block the ball and get one score.
+		assertEquals(1,game.getGamePlayers().get("Goalkeeper").getPlayerStatistics());
+		
+		
+		// In the above test, goal was kicked out.
+		// So check that the ball is not in gate.
+		assertFalse(ball.inGate());
+		
+		// Set the ball in the gate range(180<x<400,10<y<60) and check it.
+		ball.setPosition(new Point(200,40));
+		assertTrue(ball.inGate());
+	}
 }
