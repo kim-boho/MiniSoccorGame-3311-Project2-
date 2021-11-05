@@ -93,9 +93,9 @@ class ModelTester {
 		
 		Goalkeeper goalkeeper = new Goalkeeper("Goalkeeper", Color.red);
 		goalkeeper.setInitialPosition();//initial position 280, 70
-		// movementstep for goalkeeper = 10; (for left and right)
+		// default movement step for goal keeper = 10; (for left and right)
 		
-		goalkeeper.moveLeft();// should be 280-movementstep, 70 = 270, 70
+		goalkeeper.moveLeft();// should be 280-movement step, 70 = 270, 70
 		assertEquals(270,goalkeeper.getPlayerPosition().getX());
 		assertEquals(70,goalkeeper.getPlayerPosition().getY());
 		
@@ -119,7 +119,7 @@ class ModelTester {
 	}
 	
 	@Test
-	public void soccorTest(){
+	public void soccerTest(){
 		SoccerGame game = new SoccerGame();
 		assertNotNull(game);
 		// check whether the SoccerGame object was created
@@ -127,6 +127,10 @@ class ModelTester {
 		// check setter and getter of remaining time
 		game.setTimeRemaining(50);
 		assertTrue(game.getTimeRemaining()==50);
+		
+		// check setter and getter of score
+		game.setGoal(2);
+		assertTrue(game.getGoal()==2);
 		
 		// check setter and getter of pause
 		game.setPaused(false);
@@ -153,12 +157,12 @@ class ModelTester {
 		ball.setPosition(game.getGamePlayers().get("Goalkeeper").getPlayerPosition());
 		assertTrue(ball.getPosition().x==280);
 		assertTrue(ball.getPosition().y==70);
-		// Set the ball goalkeeper's initial position(280,70) and move goalkeeper.
-		// and chekc it.
+		// Set the ball goalkeeper's initial position(280,70) and move goal keeper.
+		// and check it.
 		
 		
 		game.automateGoalkeeper();
-		// Then, goalkeeper should block the ball and get one score.
+		// Then, goal keeper should block the ball and get one score.
 		assertEquals(1,game.getGamePlayers().get("Goalkeeper").getPlayerStatistics());
 		
 		
@@ -169,5 +173,8 @@ class ModelTester {
 		// Set the ball in the gate range(180<x<400,10<y<60) and check it.
 		ball.setPosition(new Point(200,40));
 		assertTrue(ball.inGate());
+		
+		// Also check whether it is scored when the ball is in gate.
+		assertTrue(game.isScored());
 	}
 }
