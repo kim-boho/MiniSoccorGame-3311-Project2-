@@ -103,7 +103,7 @@ class ModelTester {
 		assertEquals(280,goalkeeper.getPlayerPosition().getX());
 		assertEquals(70,goalkeeper.getPlayerPosition().getY());
 		
-		goalkeeper.moveDown();// should be 280, 70+5 = 280, 80
+		goalkeeper.moveDown();// should be 280, 70+5 = 280, 75
 		assertEquals(280,goalkeeper.getPlayerPosition().getX());
 		assertEquals(75,goalkeeper.getPlayerPosition().getY());
 		
