@@ -11,6 +11,7 @@ Featuring design pattern/principle:
 * Collection
 * Polymorphism
 * Inheritance
+* Encapsulation 
 
 ## Control/Rules
 
