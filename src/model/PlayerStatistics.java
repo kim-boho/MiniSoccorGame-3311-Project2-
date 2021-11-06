@@ -31,9 +31,8 @@ public class PlayerStatistics {
 	}
 	
 	/**
-	 * This is toString method.
-	 * @return score in String format.
-	 */
+	 * {@inheritDoc}
+	 **/
 	@Override
 	public String toString() {
 		return Integer.toString(score);

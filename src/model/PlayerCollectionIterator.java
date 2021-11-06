@@ -29,9 +29,8 @@ public class PlayerCollectionIterator<GamePlayer> implements Iterator<GamePlayer
 	}
 	
 	/**
-	 * This method is to check whether there is more element in Iterator.
-	 * @return true if there is remained element. Otherwise, return false.
-	 */
+	 * {@inheritDoc}
+	 **/
 	@Override
 	public boolean hasNext() {
 		// TODO Auto-generated method stub
@@ -43,9 +42,8 @@ public class PlayerCollectionIterator<GamePlayer> implements Iterator<GamePlayer
 	}
 	
 	/**
-	 * This is to get next element in Iterator.
-	 * @return GamePlayer remained in Iterator. Otherwise, return null.
-	 */
+	 * {@inheritDoc}
+	 **/
 	@Override
 	public GamePlayer next() {
 		// TODO Auto-generated method stub

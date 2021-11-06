@@ -10,13 +10,21 @@ import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+/**
+ * 
+ * This is a class to form graphic for interface of game elements.
+ *
+ */
+@SuppressWarnings("serial")
 public class GamePanel extends JPanel {
 
 	private final Font uiFont;
 
 	private SoccerGame game;
-
+	
+	/**
+	 * Create panel and invoke new game.
+	 */
 	public GamePanel() {
 		super(null);
 		super.setBackground(new Color(112, 176, 49));
@@ -24,11 +32,19 @@ public class GamePanel extends JPanel {
 		setupSoccerGame();
 		setupRepaint();
 	}
-
+	
+	/**
+	 * Create new game and set as a field.
+	 * 
+	 */
 	public void setupSoccerGame() {
 		game = new SoccerGame();
 	}
-
+	
+	/**
+	 * Repaint the panel.
+	 * 
+	 */
 	private void setupRepaint() {
 		java.util.Timer timer = new Timer();
 		TimerTask repaintTask = new TimerTask() {
@@ -39,11 +55,18 @@ public class GamePanel extends JPanel {
 		};
 		timer.schedule(repaintTask, 0, 10);
 	}
-
+	
+	/**
+	 * Getter for SoccerGame that has been run on panel.
+	 * @return SoccerGame that has been run on panel.
+	 */
 	public SoccerGame getGame() {
 		return game;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 **/
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -56,7 +79,11 @@ public class GamePanel extends JPanel {
 		paintBall(g);
 		paintStatistics(g);
 	}
-
+	
+	/**
+	 * To paint paused message.
+	 * @param g graphic element
+	 */
 	private void paintPausedText(Graphics g) {
 		if (getGame().isPaused()) {
 			g.setColor(Color.red);
@@ -64,7 +91,11 @@ public class GamePanel extends JPanel {
 			g.drawString("Paused", 270, 300);
 		}
 	}
-
+	
+	/**
+	 * To paint gate.
+	 * @param g graphic element
+	 */
 	private void paintGate(Graphics g) {
 		g.setColor(Color.white);
 		g.fillRect(200, 10, 200, 50);
@@ -72,24 +103,40 @@ public class GamePanel extends JPanel {
 		g.setFont(uiFont);
 		g.drawString("Gate", 280, 40);
 	}
-
+	
+	/**
+	 * To paint paint penalty line.
+	 * @param g graphic element
+	 */
 	private void paintPenaltyLine(Graphics g) {
 		g.setColor(Color.darkGray);
 		g.drawLine(0, 200, 600, 200);
 	}
-
+	
+	/**
+	 * To paint timer.
+	 * @param g graphic element
+	 */
 	private void paintTimer(Graphics g) {
 		g.setColor(Color.black);
 		g.setFont(uiFont);
 		g.drawString("Time: " + getGame().getTimeRemaining(), 20, 25);
 	}
-
+	
+	/**
+	 * To paint goal score.
+	 * @param g graphic element
+	 */
 	private void paintGoal(Graphics g) {
 		g.setColor(Color.black);
 		g.setFont(uiFont);
 		g.drawString("Goal: " + game.getGoal(), 20, 50);
 	}
-
+	
+	/**
+	 * To paint players.
+	 * @param g graphic element
+	 */
 	private void paintPlayers(Graphics g) {
 		PlayerCollection gamePlayers = game.getGamePlayers();
 		for (GamePlayer player : gamePlayers) {
@@ -105,13 +152,21 @@ public class GamePanel extends JPanel {
 			g.drawString(player.getPlayerName(), player.getPlayerPosition().x - (int) (1.8 * player.getPlayerName().length()), player.getPlayerPosition().y + 85);
 		}
 	}
-
+	
+	/**
+	 * To paint ball.
+	 * @param g graphic element
+	 */
 	private void paintBall(Graphics g) {
 		SoccerBall soccerBall = SoccerBall.getSoccerBall();
 		g.setColor(soccerBall.getColor());
 		g.fillOval(soccerBall.getPosition().x, soccerBall.getPosition().y, 20, 20);
 	}
-
+	
+	/**
+	 * To paint players score.
+	 * @param g graphic element
+	 */
 	private void paintStatistics(Graphics g) {
 		if (getGame().isOver()) {
 			g.setColor(Color.red);

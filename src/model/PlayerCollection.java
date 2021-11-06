@@ -66,9 +66,8 @@ public class PlayerCollection implements Iterable<GamePlayer>{
 	}
 	
 	/**
-	 * This method is to create iterator.
-	 * @return Iterator<GamePlayer>
-	 */
+	 * {@inheritDoc}
+	 **/
 	@Override
 	public Iterator<GamePlayer> iterator() {
 		// TODO Auto-generated method stub

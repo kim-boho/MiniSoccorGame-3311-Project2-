@@ -6,15 +6,26 @@ import view.GamePanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * 
+ * This class is a controller class to control menu bar input from user.
+ *
+ */
 public class MenubarListener implements ActionListener {
 
 	private final GamePanel gamePanel;
-
+	
+	/**
+	 * Create class object with the current panel.
+	 * @param panel is a GamePanel that user is running.
+	 */
 	public MenubarListener(GamePanel panel) {
 		gamePanel = panel;
 	}
-
-
+	
+	/**
+	 * {@inheritDoc}
+	 **/
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		SoccerGame soccerGame = gamePanel.getGame();

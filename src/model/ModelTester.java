@@ -11,9 +11,16 @@ import org.junit.jupiter.api.Test;
 import model.players.GamePlayer;
 import model.players.Goalkeeper;
 import model.players.Striker;
-
+/**
+ * 
+ * This is a test class using JUnit.
+ *
+ */
 class ModelTester {
-
+	
+	/**
+	 * Test for PlayerCollection, PlayerFactory, PlayerStatistics PlayerCollectionIterator
+	 */
 	@Test
 	void playertest() {
 		PlayerCollection gamePlayers=new PlayerCollection();;
@@ -67,6 +74,9 @@ class ModelTester {
 		assertEquals("Striker scored 2 goals",Striker.toString());
 	}
 	
+	/**
+	 * Test for moving of objects.
+	 */
 	@Test
 	public void moveTest() {
 		Striker striker = new Striker("Striker", Color.red);
@@ -118,6 +128,9 @@ class ModelTester {
 		assertTrue(goalkeeper.getPlayerPosition().getX()!=x);
 	}
 	
+	/**
+	 * Test for SoccerGame and Ball class.
+	 */
 	@Test
 	public void soccerTest(){
 		SoccerGame game = new SoccerGame();
