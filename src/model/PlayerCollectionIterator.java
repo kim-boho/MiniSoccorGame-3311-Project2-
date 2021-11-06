@@ -28,6 +28,10 @@ public class PlayerCollectionIterator<GamePlayer> implements Iterator<GamePlayer
 		tail=players.size()-1;
 	}
 	
+	/**
+	 * This method is to check whether there is more element in Iterator.
+	 * @return true if there is remained element. Otherwise, return false.
+	 */
 	@Override
 	public boolean hasNext() {
 		// TODO Auto-generated method stub
@@ -37,11 +41,16 @@ public class PlayerCollectionIterator<GamePlayer> implements Iterator<GamePlayer
 			return true;
 		}
 	}
-
+	
+	/**
+	 * This is to get next element in Iterator.
+	 * @return GamePlayer remained in Iterator. Otherwise, return null.
+	 */
 	@Override
 	public GamePlayer next() {
 		// TODO Auto-generated method stub
-		return players.get(head++);
+		if(hasNext()) return players.get(head++);
+		else return null;
 	}
 
 }

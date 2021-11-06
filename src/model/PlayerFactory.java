@@ -9,8 +9,8 @@ import model.players.Striker;
 
 /*
  * This is a Factory class to create GamePlayer object.
+ * 
  */
-
 public class PlayerFactory {
 	
 	/**

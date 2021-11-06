@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"model","l":"PlayerCollection"},{"p":"model","l":"PlayerCollectionIterator"},{"p":"model","l":"PlayerFactory"},{"p":"model","l":"PlayerStatistics"}];updateSearchResults();

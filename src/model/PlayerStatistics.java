@@ -30,6 +30,10 @@ public class PlayerStatistics {
 		this.score = statistics;
 	}
 	
+	/**
+	 * This is toString method.
+	 * @return score in String format.
+	 */
 	@Override
 	public String toString() {
 		return Integer.toString(score);
